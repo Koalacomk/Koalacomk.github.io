@@ -1,55 +1,44 @@
+# Triggered on push branch source
 on:
   push:
-    branches:
-      - main
-      - master
+     branches:
+       - source
 
-name: blogdown
+# Name of the workflow - usethis::use_github_actions_badge("deployblog")
+name: deployblog
 
+# Set the job, the machine
 jobs:
-  build:
-    runs-on: macOS-latest
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+  deployblog:
+    name: Render and deploy blogdown
+    runs-on: ubuntu-18.04
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v1
-
-      - name: Install pandoc
-        run: |
-          brew install pandoc
-
-      - name: Cache Renv packages
-        uses: actions/cache@v2
+      # This action clones your repository from the respective branch that has triggered it
+      - uses: actions/checkout@v2
         with:
-          path: $HOME/.local/share/renv
-          key: r-${{ hashFiles('renv.lock') }}
-          restore-keys: r-
-
-      - name: Install packages
+          submodules: true
+          fetch-depth: 0
+        # set-up an R installation in our GHA machine to run our scripts
+      - uses: r-lib/actions/setup-r@v1
+        # We will also need pandoc to compile our Shiny or RMarkdown report
+      - uses: r-lib/actions/setup-pandoc@v1
+        # Install R packages
+      - name: Install r packages
         run: |
-          R -e 'install.packages("renv")'
-          R -e 'renv::restore()'
-
-      - name: Install hugo
-        run: |
-          R -e 'blogdown::install_hugo()'
-
-      - name: Build site
-        run: |
-          R -e 'blogdown::build_site(TRUE)'
-
-      - name: Install npm
-        uses: actions/setup-node@v1
-
-      - name: Deploy to Netlify
-        # NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID added in the repo's secrets
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        run: |
-          npm install netlify-cli -g
-          netlify deploy --prod
+          Rscript -e 'install.packages(c("remotes", "rmarkdown"))' \
+                  -e 'remotes::install_github("rstudio/blogdown")'
+      - name: install hugo
+        # Install Hugo
+        run: Rscript -e 'blogdown::install_hugo(extended = TRUE, version = "0.78.2")'
+      - name: Get themes
+        run: git submodule update --remote
+      - name: Look at files
+        run: ls ./public
+      - name: Render blog
+        run: Rscript -e 'blogdown::build_site(local = FALSE)'
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: master
+          publish_dir: ./public
