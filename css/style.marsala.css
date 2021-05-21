@@ -3562,3 +3562,10 @@ a.list-group-item.active > .badge,
   left: 15px;
   right: 15px;
 }
+
+.my_figure{
+     border-radius: 100%;
+    /* background: #ffffff; */
+    width: 150px;
+    border: 3px solid #aa55da;
+}
