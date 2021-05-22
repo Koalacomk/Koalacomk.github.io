@@ -18,7 +18,7 @@ menu:
       url: /blog/
       weight: 2
     - identifier: faq
-      name: Faq
+      name: About Me
       url: /faq/
       weight: 3
     - identifier: contact
@@ -43,10 +43,9 @@ menu:
       url: mailto:koalacomk@gmail.com
       weight: 4
 params:
-  about_us: <p>Pellentesque habitant morbi tristique senectus et netus et malesuada
+  about_us: <p> I am a simple guy trying to learn lots of stuff and helping others on their path. Also, a Mathematician, Manager, Brazilian and normal guy.
     fames ac turpis egestas.</p>
-  address: "<p class=\"text-uppercase\"><strong>Universal Ltd.</strong>\r\n        <br>13/25
-    New Avenue\r\n        <br>Newtown upon River\r\n        <br>45Y 73J\r\n        <br>Vina del Mar\r\n
+  address: "<p class=\"text-uppercase\"><strong>koalacomk@gmail.com</strong>\r\n        <br>+56935290197\r\n<br>Vina del Mar\r\n
     \       <br>\r\n        <strong>Chile</strong>\r\n      </p>\r\n      "
   author: DevCows
   carousel:
@@ -77,11 +76,8 @@ params:
   mainSections: blog
   recent_posts:
     enable: yes
-    subtitle: Pellentesque habitant morbi tristique senectus et netus et malesuada
-      fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
-      tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-      ultricies mi vitae est. Mauris placerat eleifend leo.
-    title: From our blog
+    subtitle: My intent with this blog is to share my opinion, codes and insights about data related topics, automations, thought and insights.
+    title: Sharing Tips, Thoughts and Helping Others
   see_more:
     enable: yes
     subtitle: Welcome to my page.
