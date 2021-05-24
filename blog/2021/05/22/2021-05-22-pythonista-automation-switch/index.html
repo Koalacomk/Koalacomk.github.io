@@ -150,13 +150,6 @@
                     
                   </li>
                   
-                  
-                  <li class="dropdown">
-                    
-                    <a href="/contact/">Contact</a>
-                    
-                  </li>
-                  
                 </ul>
             </div>
             
@@ -220,12 +213,12 @@
 <div class="col-md-6">
 <p>One of the values that we as programmers look for is the practicality in our life, whether in our personal or professional life we always look for improvements of our activities. One of the issues sought in the market that impact our personal lives is the <strong>Smart house</strong> or <strong>Home Automation</strong>, which consists of automating or monitoring our domestic tasks and environments using internet connectivity and integrated systems.
 <br />
-On IOS you can find systems and products integrated with Homekit and Shorcut Automations, both native to Iphone. Unfortunately Apples products tend to be more expensive on the market and for that reason, I tried to create alternatives to create automations with a lower price.</p>
+On IOS you can find systems and products integrated with Homekit and Shorcut Automations, both native to Iphone. Unfortunately Apple’s products tend to be more expensive on the market and for that reason, I tried to create alternatives to create automations with a lower price.</p>
 </div>
 <div class="col-md-6">
 <p>Uma das coisas que nós, programadores, buscamos é a praticidade em nossa vida, seja em nossa vida pessoal ou profissional sempre buscamos o aperfeiçoamento de nossas atividades. Um dos assuntos procurados no mercado que impactam nossa vida pessoal é a <strong>Smart house</strong> ou <strong>Home Automation</strong>, que consiste em automatizar ou monitorar nossas tarefas domésticas e ambientes utilizando a conectividade com a internet e sistemas integradores.
 <br />
-No IOS você pode encontrar sistemas e produtos integrados com o Homekit e Automations, ambos nativos do Iphone. Infelizmente os produtos Apples tendem a serem mais caros no mercado e por isso, eu busquei criar alternativas para criar automações com um preço menor.</p>
+No IOS você pode encontrar sistemas e produtos integrados com o Homekit e Automations, ambos nativos do Iphone. Infelizmente os produtos Apples tendem a ser mais caros no mercado e por isso, eu busquei criar alternativas para criar automações com um preço menor.</p>
 </div>
 </div>
 <div id="the-switch" class="section level2">
@@ -251,7 +244,52 @@ No IOS você pode encontrar sistemas e produtos integrados com o Homekit e Autom
 </div>
 <div id="connection-to-tuya-and-ios" class="section level2">
 <h2>Connection to Tuya and IOS</h2>
-<p>(to continue…)</p>
+<div class="row">
+<div class="col-md-6">
+<p><strong><em><a href="https://apps.apple.com/cr/app/smart-life-smart-living/id1115101477">SmartLife app</a></em></strong> connects to many devices and provides interfaces to operate each one of them. To establish the connection, just make sure that your device is on the same network as your smartphone and that the network frequency is compatible with the device (some devices only work on the 2.4 Ghz frequency).</p>
+</div>
+<div class="col-md-6">
+O Aplicativo <strong><em><a href="https://apps.apple.com/cr/app/smart-life-smart-living/id1115101477">SmartLife</a></em></strong> se conecta a diversos dispostivos e proporciona interfaces para operar cada um deles. Para estabelecer a conexão, somente se segure que seu dispositivo esteja na mesma rede que seu smartphone e que a frequência da rede seja compativel ao aparelho (alguns dispostivos apenas funcionan na frequencia 2.4 Ghz). <br />
+</div>
+</div>
+<p><img src="img/02TUYA.PNG" alt="Smartlife App" /> <img src="img/01TUYA.PNG" alt="Interface dor Smart Breaker" /></p>
+<div class="row">
+<div class="col-md-6">
+<p>It is a good application but Apple doesnt recognize Tuya devices as official and therefore they do not integrate with Iphone Homekit and also does not connect with the iPhone’s Shortcuts, so we will use Pythonista to trigger and automate the device.</p>
+</div>
+<div class="col-md-6">
+<p>Por mais que seja um bom aplicativo, a Apple não reconhece os dispositivos Tuya como oficiais e por isso eles não se integram com o Homekit do Iphone e também não se conectam com o Shortcuts App do Iphone, por isso vamos utilizar Pythonista para acionar e automatizar o dispositivo.
+<br /></p>
+</div>
+</div>
+</div>
+<div id="pythonista-for-ios" class="section level2">
+<h2>Pythonista for IOS</h2>
+<div class="row">
+<div class="col-md-6">
+<p><strong><em><a href="https://apps.apple.com/us/app/pythonista-3/id1085978097">Pythonista</a></em></strong> is an app that allows you to run Python on your SMartphone. It is paid (approximately $ 9.99) but is great for running some applications. It already has some packages installed but to install other packages it is necessary to install <strong><em><a href="https://github.com/ywangd/stash">stash package</a></em></strong> that allows you to install other packages (follow the instructions on the link to install it). After installation, we will need another API to access Smart Break, <strong><em><a href="https://pypi.org/project/tinytuya/">TinyTuya package</a></em></strong>. With it we will have to access all SmartLife devices connected to the network and access some functions of it.</p>
+</div>
+<div class="col-md-6">
+<strong><em><a href="https://apps.apple.com/us/app/pythonista-3/id1085978097">Pythonista</a></em></strong> é um app que te permite rodar Python em seu SMartphone. Ele é pago (aproximadamente U$ 9.99) mas é ótimo para rodar algumas aplicações. Ele já possui alguns pacotes instalados mas para instalar outros pacotes é necessário instalar o <strong><em><a href="https://github.com/ywangd/stash">Pacote stash</a></em></strong> que te permite instalar outros pacotes (siga as instruções no link para instala-lo). Após a instalação, vamos precisar outra API para acessar o Smart Break, <strong><a href="https://pypi.org/project/tinytuya/">Pacote TinyTuya</a></strong> . Com ele vamos ter a acessar todos os dispositivos SmartLife conectados a rede e acessar algumas funções dele.
+<br />
+</div>
+</div>
+<blockquote>
+<p>import tinytuya<br /><br />
+DEVICEID=‘YOUR_DEVICE_ID’<br />
+DEVICEIP=‘YOUR_IP’<br />
+DEVICEKEY=‘YOUR_DEVICE_KEY’<br /><br />
+d=tinytuya.OutletDevice(DEVICEID, DEVICEIP, DEVICEKEY)<br />
+d.set_version(3.3)<br />
+data = d.status()<br />
+switch_state = data[‘dps’][‘1’]<br />
+if switch_state==False:<br />
+printmsg=“ Acendendo Abajur …”<br />
+else:<br />
+printmsg = “ Apagando Abajur …”<br />
+print(printmsg)<br />
+data = d.set_status(not switch_state)<br /></p>
+</blockquote>
 </div>
 </div>
 
