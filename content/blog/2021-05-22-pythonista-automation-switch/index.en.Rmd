@@ -14,7 +14,7 @@ banner: img/banners/01PythonSmart.png
 
 <div class = "row">
 <div class = "col-md-6">
-One of the values that we as programmers look for is the practicality in our life, whether in our personal or professional life we always look for improvements of our activities. One of the issues sought in the market that impact our personal lives is the **Smart house** or **Home Automation**, which consists of automating or monitoring our domestic tasks and environments using internet connectivity and integrated systems.
+We,programmers, always seek for practicality in our life, whether in our personal or professional environment we always look for improvements of our daily activities. One of the main automation in the market that impact our personal lives is the **Smart house** or **Home Automation**, which consists of automating or monitoring our domestic tasks and environments using internet connectivity and integrated systems.
 <br />
 On IOS you can find systems and products integrated with Homekit and Shorcut Automations, both native to Iphone. Unfortunately Apple's products tend to be more expensive on the market and for that reason, I tried to create alternatives to create automations with a lower price.
 

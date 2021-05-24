@@ -32,15 +32,14 @@ menu:
       weight: 2
     - name: Twitter
       pre: <i class='fab fa-2x fa-twitter'></i>
-      url: http://twitter.com
+      url: https://www.linkedin.com/in/luizlucena87/
       weight: 3
     - name: Email
       pre: <i class='fas fa-2x fa-envelope'></i>
       url: mailto:koalacomk@gmail.com
       weight: 4
 params:
-  about_us: <p> I am a simple guy trying to learn lots of stuff and helping others on their path. Also, a Mathematician, Manager, Brazilian and normal guy.
-    fames ac turpis egestas.</p>
+  about_us: <p> I am a simple guy trying to learn lots of stuff and helping others on their path. Also, a Mathematician, Manager, Brazilian and normal guy.</p>
   address: "<p class=\"text-uppercase\"><strong>koalacomk@gmail.com</strong>\r\n        <br>+56935290197\r\n<br>Vina del Mar\r\n
     \       <br>\r\n        <strong>Chile</strong>\r\n      </p>\r\n      "
   author: DevCows
@@ -72,12 +71,15 @@ params:
   mainSections: blog
   recent_posts:
     enable: yes
-    subtitle: My intent with this blog is to share my opinion, codes and insights about data related topics, automations, thought and insights.
+    subtitle: My intent with this blog is to share my opinion, codes and insights about data related topics, automations, thoughts and insights.
     title: Sharing Tips, Thoughts and Helping Others
   see_more:
     enable: yes
     subtitle: Welcome to my page.
     title: Luiz Lucena
+    icon: "far fa-file-alt"
+    link_url: "https://www.linkedin.com/in/luizlucena87/"
+    link_text: "LINKEDIN"
   style: marsala
   testimonials:
     enable: no
