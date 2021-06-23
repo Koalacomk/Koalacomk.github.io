@@ -8,18 +8,18 @@ tags: []
 banner: img/banners/02Cluster.png
 ---
 
-# Clustering with R
+# How to classify education expenditure by country using clusters?
 <br />
 <br />
 
 <div class = "row">
 <div class = "col-md-6">
-Cluster é uma **técnica estatística não supervisionada de aglomeração ou agrupamento de elementos ou indíviduos dado suas características e semelhanças**. Este agrupamento deve-se a distãncia euclidiana entre os indivíduos e pode ser classificada em Hierarquica e não Hierarquica.
+**PT: **Cluster é uma **técnica estatística não supervisionada de aglomeração ou agrupamento de elementos ou indíviduos dado suas características e semelhanças**. Este agrupamento deve-se a distãncia euclidiana entre os indivíduos e pode ser classificada em Hierarquica e não Hierarquica.
 <br />
 Neste post vamos demonstrar como utilizar o R para faze-lo, utilizando uma base de dados e 3 técnicas diferentes. Vamos falar da base primeiro. 
 </div>
 <div class = "col-md-6">
-Cluster is an **unsupervised statistical technique of grouping of elements or individuals considering their characteristics and similarities**. This classification is due to the Euclidean distance between those individuals and can be defined into Hierarchical and non-Hierarchical.
+**EN: **Cluster is an **unsupervised statistical technique of grouping of elements or individuals considering their characteristics and similarities**. This classification is due to the Euclidean distance between those individuals and can be defined into Hierarchical and non-Hierarchical.
 <br />
 In this post we will demonstrate how to use R to do it, using a public dataset and 3 different techniques.Let´s talk about the database first.
 </div>
@@ -29,14 +29,14 @@ In this post we will demonstrate how to use R to do it, using a public dataset a
 ### 01 - The DATA - UN data - Public expenditure on education
 <div class = "row">
 <div class = "col-md-6">
-As Nações Unidas publicamente proporciona dados de diversos países e de sobre diversos temas em seu ***[website](http://data.un.org/)*** .Dados populacionais, educacionais, financeiros , trabalhistas, criminais e diversos outros são acessíveis. Para este exercício, vamos utilizar os dados de **Gastos por países para classificar países com o mesmo comportamento**.  
+**PT: **As Nações Unidas publicamente proporciona dados de diversos países e de sobre diversos temas em seu ***[website](http://data.un.org/)*** .Dados populacionais, educacionais, financeiros , trabalhistas, criminais e diversos outros são acessíveis. Para este exercício, vamos utilizar os dados de **Gastos por países para classificar países com o mesmo comportamento**.  
 <br />
 O Carregamento e tratamento da **[base de dados](http://data.un.org/_Docs/SYB/CSV/SYB63_245_202009_Public%20Expenditure%20on%20Education.csv)** pode ser encontrado abaixo:
 </div>
 <div class = "col-md-6">
-The United Nations publicly provides data from different countries and diverse topics in its ***[website](http://data.un.org/)*** .Population, educational, financial, labor, criminal and many other data are accessible. For this exercise, we will use data from **Public expenditure on education to classify countries with same characteristic**.  
+**EN: **The United Nations publicly provides data from different countries and diverse topics in its ***[website](http://data.un.org/)*** .Population, educational, financial, labor, criminal and many other data are accessible. For this exercise, we will use data from **Public expenditure on education to classify countries with same characteristic**.  
 <br />
-The load and treatment of the  **[dataset](http://data.un.org/_Docs/SYB/CSV/SYB63_245_202009_Public%20Expenditure%20on%20Education.csv)** can be bound below:
+The load and treatment of the  **[dataset](http://data.un.org/_Docs/SYB/CSV/SYB63_245_202009_Public%20Expenditure%20on%20Education.csv)** can be found below:
 </div>
 </div>
 
@@ -56,19 +56,19 @@ data_fim <- filter(data_t,`Public expenditure on education (% of GDP)`>=0 & `Gov
 
 <div class = "row">
 <div class = "col-md-6">
-Se plotarmos os dados em um gráfico podemos ver os países bem espalhados pelo mapa. Nosso objetivo com este tópico é classificarlos de acordo com suas características.
+**PT: **Se plotarmos os dados em um gráfico podemos ver os países bem espalhados pelo mapa. Nosso objetivo com este tópico é classificarlos de acordo com suas características.
 </div>
 <div class = "col-md-6">
-If we plot the data on a graph we can see the countries spread out across the map. Our goal with this topic is to classify them according to their characteristics.
+**EN: **If we plot the data on a graph we can see the countries spread out across the map. Our goal with this topic is to classify them according to their characteristics.
 </div>
 </div>
 ![Expenditure on education](img/Rplot.png)
 <div class = "row">
 <div class = "col-md-6">
-Agora para os próximos tópicos vamos utilizar o R e as seguintes libraries para gerar os cluster: tidyverse, cluster, dendextend, factoextra, fpc and readxl.
+**PT: **Agora para os próximos tópicos vamos utilizar o R e as seguintes libraries para gerar os cluster: tidyverse, cluster, dendextend, factoextra, fpc and readxl.
 </div>
 <div class = "col-md-6">
-Now for the next topics we will use R and the following libraries to generate the clusters: tidyverse, cluster, dendextend, factoextra, fpc and readxl.
+**EN: **Now for the next topics we will use R and the following libraries to generate the clusters: tidyverse, cluster, dendextend, factoextra, fpc and readxl.
 </div>
 </div>
 <br />
@@ -79,21 +79,21 @@ Now for the next topics we will use R and the following libraries to generate th
 
 <div class = "row">
 <div class = "col-md-6">
-O modelo de cluster hierarquico é um método no qual dois indíviduos com a menor distância euclidiana são agrupados, formando um grupo (ou um individuo) e assim o processo e repetido até todos os individuos serem agrupados em uma população. Também podemos partir a População total e separararmos em grupos menores, mas de qualquer maneira formando uma hierarquia de grupos nos quais a variabilidade entre os grupos aumenta ou diminui. Você pode encontrar mais informações sobre Cluster Hierarquicos ***[aqui](https://www.displayr.com/what-is-hierarchical-clustering/)*** .<br />
+**PT: **O modelo de cluster hierarquico é um método no qual dois indíviduos com a menor distância euclidiana são agrupados, formando um grupo (ou um individuo) e assim o processo e repetido até todos os individuos serem agrupados em uma população. Também podemos partir a População total e separararmos em grupos menores, mas de qualquer maneira formando uma hierarquia de grupos nos quais a variabilidade entre os grupos aumenta ou diminui. Você pode encontrar mais informações sobre Cluster Hierarquicos ***[aqui](https://www.displayr.com/what-is-hierarchical-clustering/)*** .<br />
 Existem diversos métodos de sequenciar os grupos hierarquicos, sendo conservativos ou agressivos, definindo no processo de linkage criteria. Para este exemplo, vamos usar o método "single linkage", no qual utilizamos a menor distancia de todos individuos de um grupo para encontrar um próximo grupo/individuo.
 </div>
 <div class = "col-md-6">
-The hierarchical cluster model is a method in which two individuals with the smallest Euclidean distance are grouped, forming a group (or an individual) and so the process is repeated until all individuals are grouped into a population. We can also break up the total population and break it up into smaller groups, but anyway forming a hierarchy of groups in which the variability between groups increases or decreases. You can find more information about Hierarchical Clusters ***[here](https://www.displayr.com/what-is-hierarchical-clustering/)*** .<br />
+**EN: **The hierarchical cluster model is a method in which two individuals with the smallest Euclidean distance are grouped, forming a group (or an individual) and so the process is repeated until all individuals are grouped into a population. We can also break up the total population and break it up into smaller groups, but anyway forming a hierarchy of groups in which the variability between groups increases or decreases. You can find more information about Hierarchical Clusters ***[here](https://www.displayr.com/what-is-hierarchical-clustering/)*** .<br />
 There are several methods of sequencing the hierarchical groups, being conservative or aggressive, defining in the process of linkage criteria. For this example, we are going to use the "single linkage" method, in which we use the shortest distance of all individuals in a group to find a next group/individual.
 </div>
 </div>
 <br />
 <div class = "row">
 <div class = "col-md-6">
-Você pode visualizar o modelo hierarquico de nossa base de dados no dendograma abaixo:
+**PT: **Você pode visualizar o modelo hierarquico de nossa base de dados no dendograma abaixo:
 </div>
 <div class = "col-md-6">
-You can view the hierarchical model of our database in the dendrogram below:
+**EN: **You can view the hierarchical model of our database in the dendrogram below:
 </div>
 </div>
 
@@ -122,10 +122,10 @@ data_fim <- cbind(data_fim, table_dist)
 
 <div class = "row">
 <div class = "col-md-6">
-No código acima foi utilizado 5 cluster para serem criados. Infelizmente modelos hierarquicos não performam bem quando temos um grande número de indivíduos, como você pode visualizar abaixo:
+**PT: **No código acima foi utilizado 5 cluster para serem criados. Infelizmente modelos hierarquicos não performam bem quando temos um grande número de indivíduos, como você pode visualizar abaixo:
 </div>
 <div class = "col-md-6">
-In the code above, 5 clusters were used to be created. Unfortunately hierarchical models doesnt have a good performance when we have a large number of individuals, as you can see below:
+**EN: **In the code above, 5 clusters were used to be created. Unfortunately hierarchical models doesnt have a good performance when we have a large number of individuals, as you can see below:
 </div>
 </div>
 
@@ -136,10 +136,10 @@ In the code above, 5 clusters were used to be created. Unfortunately hierarchica
 
 <div class = "row">
 <div class = "col-md-6">
-O método K-means de clusterização é um método não-hierarquico que utiliza centroides  para particionar a população dado grupos mais próximos. Dado um número inicial de cluster selecionado, este método tem como principio posicionar os centroides na sua população, relacionar os indivíduos próximos e recalcular os centroides até não houver mais interações possíveis. Mais informações sobre este método podem encontradas ***[aqui](https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/)*** .
+**PT: **O método K-means de clusterização é um método não-hierarquico que utiliza centroides  para particionar a população dado grupos mais próximos. Dado um número inicial de cluster selecionado, este método tem como principio posicionar os centroides na sua população, relacionar os indivíduos próximos e recalcular os centroides até não houver mais interações possíveis. Mais informações sobre este método podem encontradas ***[aqui](https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/)*** .
 </div>
 <div class = "col-md-6">
-The K-means clustering is a non-hierarchical method that uses centroids to group the population into closer groups. Given an initial number of selected clusters, this method put the centroids in its population, selecting the nearby individuals and recalculating the centroids positions until there are no more possible interactions. More information about this method can be found ***[here](https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/)*** .
+**EN: **The K-means clustering is a non-hierarchical method that uses centroids to group the population into closer groups. Given an initial number of selected clusters, this method put the centroids in its population, selecting the nearby individuals and recalculating the centroids positions until there are no more possible interactions. More information about this method can be found ***[here](https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/)*** .
 </div>
 </div>
 
@@ -168,10 +168,10 @@ theme_void()
 
 <div class = "row">
 <div class = "col-md-6">
-O código acima usa 5 clusters para segmentar nossa população, salvar os cluster na base inicial e plotar o gráfico abaixo: 
+**PT: **O código acima usa 5 clusters para segmentar nossa população, salvar os cluster na base inicial e plotar o gráfico abaixo: 
 </div>
 <div class = "col-md-6">
-The code above use only 5 cluster to segment our population, saves it on our inital dataset and plot the following graph:
+**EN: **The code above use only 5 cluster to segment our population, saves it on our initial dataset and plot the following graph:
 </div>
 </div>
 
@@ -186,10 +186,10 @@ The code above use only 5 cluster to segment our population, saves it on our ini
 
 <div class = "row">
 <div class = "col-md-6">
-DBSCAN (Agrupamento espacial baseado na densidade dos indivíduos com ruído) é um método não hierárquico que usa a densidade e a proximidade dos indivíduos para agrupá-los. Para cada ponto, este método calcula quantos vizinhos próximos aquele ponto possui e classifica esse ponto como um ponto central, um externo ou um ruído. Você pode verificar mais informações sobre isso ***[aqui](https://towardsdatascience.com/how-dbscan-works-and-why-should-i-use-it-443b4a191c80/)*** .
+**PT: **DBSCAN (Agrupamento espacial baseado na densidade dos indivíduos com ruído) é um método não hierárquico que usa a densidade e a proximidade dos indivíduos para agrupá-los. Para cada ponto, este método calcula quantos vizinhos próximos aquele ponto possui e classifica esse ponto como um ponto central, um externo ou um ruído. Você pode verificar mais informações sobre isso ***[aqui](https://towardsdatascience.com/how-dbscan-works-and-why-should-i-use-it-443b4a191c80/)*** .
 </div>
 <div class = "col-md-6">
-The dbscan (Density-based spatial clustering of applications with noise) clustering is a non-hierarchical method that uses the density and proximity of individuals to group them . For every point, this method calculate how many nearby neighbors that point has and classify that point as a Core point, an outlyer or a noise. You can check more information about it  ***[here](https://towardsdatascience.com/how-dbscan-works-and-why-should-i-use-it-443b4a191c80/)*** .
+**EN: **The dbscan (Density-based spatial clustering of applications with noise) clustering is a non-hierarchical method that uses the density and proximity of individuals to group them . For every point, this method calculate how many nearby neighbors that point has and classify that point as a Core point, an outlyer or a noise. You can check more information about it  ***[here](https://towardsdatascience.com/how-dbscan-works-and-why-should-i-use-it-443b4a191c80/)*** .
 </div>
 </div>
 
@@ -223,10 +223,10 @@ theme_void()
 
 <div class = "row">
 <div class = "col-md-6">
-E é isso pessoal, neste tópico temos 3 métodos diferente de aplicarmos Cluster em uma base de dados utilizando R. Obrigado pela leitura!
+**PT: **E é isso pessoal, neste tópico temos 3 métodos diferente de aplicarmos Cluster em uma base de dados utilizando R. Obrigado pela leitura!
 </div>
 <div class = "col-md-6">
-And that's it folks, in this topic we have 3 different methods of applying Cluster to a database using R. Thanks for reading!
+**EN: **And that's it folks, in this topic we have 3 different methods of applying Cluster to a database using R. Thanks for reading!
 </div>
 </div>
 

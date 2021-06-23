@@ -13,9 +13,8 @@
       <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://Koalacomk.github.io/blog/2021/06/22/2021-06-22-clustering-with-r/</guid>
-      <description>Clustering with R 
-Cluster é uma técnica estatística não supervisionada de aglomeração ou agrupamento de elementos ou indíviduos dado suas características e semelhanças. Este agrupamento deve-se a distãncia euclidiana entre os indivíduos e pode ser classificada em Hierarquica e não Hierarquica. Neste post vamos demonstrar como utilizar o R para faze-lo, utilizando uma base de dados e 3 técnicas diferentes. Vamos falar da base primeiro.
- Cluster is an unsupervised statistical technique of grouping of elements or individuals considering their characteristics and similarities.</description>
+      <description>How to classify education expenditure by country using clusters? 
+PT: Cluster é uma técnica estatística não supervisionada de aglomeração ou agrupamento de elementos ou indíviduos dado suas características e semelhanças. Este agrupamento deve-se a distãncia euclidiana entre os indivíduos e pode ser classificada em Hierarquica e não Hierarquica. Neste post vamos demonstrar como utilizar o R para faze-lo, utilizando uma base de dados e 3 técnicas diferentes. Vamos falar da base primeiro.</description>
     </item>
     
     <item>
