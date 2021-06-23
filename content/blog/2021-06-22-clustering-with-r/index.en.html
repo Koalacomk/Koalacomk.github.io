@@ -32,7 +32,7 @@ In this post we will demonstrate how to use R to do it, using a public dataset a
 <h3>01 - The DATA - UN data - Public expenditure on education</h3>
 <div class="row">
 <div class="col-md-6">
-<p>AS nações Unidas publicamente proporciona dados de diversos países e de sobre temas em seu <strong><em><a href="http://data.un.org/">website</a></em></strong> .Dados populacionais, educacionais, financeiros , trabalhistas, criminais e diversos outros são acessíveis. Para este exercício, vamos utilizar os dados de <strong>Gastos por países para classificar países com o mesmo comportamento</strong>.<br />
+<p>As Nações Unidas publicamente proporciona dados de diversos países e de sobre diversos temas em seu <strong><em><a href="http://data.un.org/">website</a></em></strong> .Dados populacionais, educacionais, financeiros , trabalhistas, criminais e diversos outros são acessíveis. Para este exercício, vamos utilizar os dados de <strong>Gastos por países para classificar países com o mesmo comportamento</strong>.<br />
 <br />
 O Carregamento e tratamento da <strong><a href="http://data.un.org/_Docs/SYB/CSV/SYB63_245_202009_Public%20Expenditure%20on%20Education.csv">base de dados</a></strong> pode ser encontrado abaixo:</p>
 </div>
@@ -73,82 +73,8 @@ data_fim &lt;- filter(data_t,`Public expenditure on education (% of GDP)`&gt;=0 
 <br />
 <br /></p>
 </div>
-<div id="clustering-with-k-means-method-método" class="section level3">
-<h3>01 - Clustering with k-Means method / método</h3>
-<div class="row">
-<div class="col-md-6">
-<p>O método K-means de clusterização é um método não-hierarquico que utiliza centroides para particionar a população dado grupos mais próximos. Dado um número inicial de cluster selecionado, este método tem como principio posicionar os centroides na sua população, relacionar os indivíduos próximos e recalcular os centroides até não houver mais interações possíveis. Mais informações sobre este método podem encontradas <strong><em><a href="https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/">aqui</a></em></strong> .</p>
-</div>
-<div class="col-md-6">
-<p>The K-means clustering is a non-hierarchical method that uses centroids to group the population into closer groups. Given an initial number of selected clusters, this method put the centroids in its population, selecting the nearby individuals and recalculating the centroids positions until there are no more possible interactions. More information about this method can be found <strong><em><a href="https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/">here</a></em></strong> .</p>
-</div>
-</div>
-<pre><code>###Calculating Clusters / Calcular os Clusters
-cluster.k1 &lt;- kmeans(data_fim, centers = 5)
-
-###Creating the groups / criando grupos
-data_kmeans5 &lt;- data.frame(cluster.k1$cluster)
-
-###Adding to the original dataset / juntando com a base original
-data_fim &lt;- cbind(data_fim, data_kmeans5)
-
-#Plotting the cluster / Mostrando os clusters
-data_fim %&gt;% ggplot() +
-  geom_point(aes(x = `Public expenditure on education (% of GDP)`,
-                 y = `Government expenditure on education (% of government expenditure)`,
-                 color = as.factor(cluster.k1$cluster)),
-             size = 3) +
-  labs(size=30,title=&quot;Expenditure on Education&quot;) +
-  geom_text(size=3,aes(x = `Public expenditure on education (% of GDP)`,
-                       y = `Government expenditure on education (% of government expenditure)`, label = rownames(data_fim), hjust=0, vjust=-1))
-theme_void()
-</code></pre>
-<div class="row">
-<div class="col-md-6">
-<p>O código acima usa 5 clusters para segmentar nossa população, salvar os cluster na base inicial e plotar o gráfico abaixo:</p>
-</div>
-<div class="col-md-6">
-<p>The code above use only 5 cluster to segment our population, saves it on our inital dataset and plot the following graph:</p>
-</div>
-</div>
-<p><img src="img/Rplot01kmeans.png" alt="Clusters by Kmeans" />
-<br />
-<br />
-<br /></p>
-</div>
-<div id="clustering-with-dbscan-method-método" class="section level3">
-<h3>02 - Clustering with DBSCAN method / método</h3>
-<div class="row">
-<div class="col-md-6">
-<p>DBSCAN (Agrupamento espacial baseado na densidade dos indivíduos com ruído) é um método não hierárquico que usa a densidade e a proximidade dos indivíduos para agrupá-los. Para cada ponto, este método calcula quantos vizinhos próximos aquele ponto possui e classifica esse ponto como um ponto central, um externo ou um ruído. Você pode verificar mais informações sobre isso <strong><em><a href="https://towardsdatascience.com/how-dbscan-works-and-why-should-i-use-it-443b4a191c80/">aqui</a></em></strong> .</p>
-</div>
-<div class="col-md-6">
-<p>The dbscan (Density-based spatial clustering of applications with noise) clustering is a non-hierarchical method that uses the density and proximity of individuals to group them . For every point, this method calculate how many nearby neighbors that point has and classify that point as a Core point, an outlyer or a noise. You can check more information about it <strong><em><a href="https://towardsdatascience.com/how-dbscan-works-and-why-should-i-use-it-443b4a191c80/">here</a></em></strong> .</p>
-</div>
-</div>
-<pre><code>###Creating the cluster / Calcular o Cluster
-dbscan &lt;- fpc::dbscan(data_fim,eps = 2 , MinPts = 3)
-
-data_fim$dbscan &lt;- dbscan$cluster
-
-###Plot the cluster / visualizando em cores os clusters
-data_fim %&gt;% ggplot() +
-  geom_point(aes(x = `Public expenditure on education (% of GDP)`,
-                 y = `Government expenditure on education (% of government expenditure)`,
-                 color = as.factor(dbscan)),
-             size = 3) +
-  labs(size=30,title=&quot;Expenditure on Education&quot;) +
-  geom_text(size=3,aes(x = `Public expenditure on education (% of GDP)`,
-                       y = `Government expenditure on education (% of government expenditure)`, label = rownames(data_fim), hjust=0, vjust=-1))
-theme_void()
-</code></pre>
-<p><img src="img/Rplot01dbscan.png" alt="Cluster dbscan" />
-<br />
-<br />
-<br /></p>
-</div>
 <div id="hierarchical-cluster-cluster-hierarquico" class="section level3">
-<h3>03 - Hierarchical cluster/ Cluster Hierarquico</h3>
+<h3>02 - Hierarchical cluster/ Cluster Hierarquico</h3>
 <div class="row">
 <div class="col-md-6">
 <p>O modelo de cluster hierarquico é um método no qual dois indíviduos com a menor distância euclidiana são agrupados, formando um grupo (ou um individuo) e assim o processo e repetido até todos os individuos serem agrupados em uma população. Também podemos partir a População total e separararmos em grupos menores, mas de qualquer maneira formando uma hierarquia de grupos nos quais a variabilidade entre os grupos aumenta ou diminui. Você pode encontrar mais informações sobre Cluster Hierarquicos <strong><em><a href="https://www.displayr.com/what-is-hierarchical-clustering/">aqui</a></em></strong> .<br />
@@ -192,16 +118,90 @@ data_fim &lt;- cbind(data_fim, table_dist)
 </code></pre>
 <div class="row">
 <div class="col-md-6">
-<p>No código acima foi utilizado 5 cluster para serem criados. Infelizmente modelos hierarquicos não são muito utilizados quando temos um grande número de indivíduos, como você pode visualizar abaixo:</p>
+<p>No código acima foi utilizado 5 cluster para serem criados. Infelizmente modelos hierarquicos não performam bem quando temos um grande número de indivíduos, como você pode visualizar abaixo:</p>
 </div>
 <div class="col-md-6">
-<p>In the code above, 5 clusters were used to be created. Unfortunately hierarchical models are not used very much when we have a large number of individuals, as you can see below:</p>
+<p>In the code above, 5 clusters were used to be created. Unfortunately hierarchical models doesnt have a good performance when we have a large number of individuals, as you can see below:</p>
 </div>
 </div>
 <div class="figure">
 <img src="img/Rplot01hier.png" alt="" />
 <p class="caption">Cluster Hierachy</p>
 </div>
+</div>
+<div id="clustering-with-k-means-method-método" class="section level3">
+<h3>03 - Clustering with k-Means method / método</h3>
+<div class="row">
+<div class="col-md-6">
+<p>O método K-means de clusterização é um método não-hierarquico que utiliza centroides para particionar a população dado grupos mais próximos. Dado um número inicial de cluster selecionado, este método tem como principio posicionar os centroides na sua população, relacionar os indivíduos próximos e recalcular os centroides até não houver mais interações possíveis. Mais informações sobre este método podem encontradas <strong><em><a href="https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/">aqui</a></em></strong> .</p>
+</div>
+<div class="col-md-6">
+<p>The K-means clustering is a non-hierarchical method that uses centroids to group the population into closer groups. Given an initial number of selected clusters, this method put the centroids in its population, selecting the nearby individuals and recalculating the centroids positions until there are no more possible interactions. More information about this method can be found <strong><em><a href="https://www.analyticsvidhya.com/blog/2019/08/comprehensive-guide-k-means-clustering/">here</a></em></strong> .</p>
+</div>
+</div>
+<pre><code>###Calculating Clusters / Calcular os Clusters
+cluster.k1 &lt;- kmeans(data_fim, centers = 5)
+
+###Creating the groups / criando grupos
+data_kmeans5 &lt;- data.frame(cluster.k1$cluster)
+
+###Adding to the original dataset / juntando com a base original
+data_fim &lt;- cbind(data_fim, data_kmeans5)
+
+#Plotting the cluster / Mostrando os clusters
+data_fim %&gt;% ggplot() +
+  geom_point(aes(x = `Public expenditure on education (% of GDP)`,
+                 y = `Government expenditure on education (% of government expenditure)`,
+                 color = as.factor(cluster.k1$cluster)),
+             size = 3) +
+  labs(size=30,title=&quot;Expenditure on Education&quot;) +
+  geom_text(size=3,aes(x = `Public expenditure on education (% of GDP)`,
+                       y = `Government expenditure on education (% of government expenditure)`, label = rownames(data_fim), hjust=0, vjust=-1))
+theme_void()
+</code></pre>
+<div class="row">
+<div class="col-md-6">
+<p>O código acima usa 5 clusters para segmentar nossa população, salvar os cluster na base inicial e plotar o gráfico abaixo:</p>
+</div>
+<div class="col-md-6">
+<p>The code above use only 5 cluster to segment our population, saves it on our inital dataset and plot the following graph:</p>
+</div>
+</div>
+<p><img src="img/Rplot01kmeans.png" alt="Clusters by Kmeans" />
+<br />
+<br />
+<br /></p>
+</div>
+<div id="clustering-with-dbscan-method-método" class="section level3">
+<h3>04 - Clustering with DBSCAN method / método</h3>
+<div class="row">
+<div class="col-md-6">
+<p>DBSCAN (Agrupamento espacial baseado na densidade dos indivíduos com ruído) é um método não hierárquico que usa a densidade e a proximidade dos indivíduos para agrupá-los. Para cada ponto, este método calcula quantos vizinhos próximos aquele ponto possui e classifica esse ponto como um ponto central, um externo ou um ruído. Você pode verificar mais informações sobre isso <strong><em><a href="https://towardsdatascience.com/how-dbscan-works-and-why-should-i-use-it-443b4a191c80/">aqui</a></em></strong> .</p>
+</div>
+<div class="col-md-6">
+<p>The dbscan (Density-based spatial clustering of applications with noise) clustering is a non-hierarchical method that uses the density and proximity of individuals to group them . For every point, this method calculate how many nearby neighbors that point has and classify that point as a Core point, an outlyer or a noise. You can check more information about it <strong><em><a href="https://towardsdatascience.com/how-dbscan-works-and-why-should-i-use-it-443b4a191c80/">here</a></em></strong> .</p>
+</div>
+</div>
+<pre><code>###Creating the cluster / Calcular o Cluster
+dbscan &lt;- fpc::dbscan(data_fim,eps = 2 , MinPts = 3)
+
+data_fim$dbscan &lt;- dbscan$cluster
+
+###Plot the cluster / visualizando em cores os clusters
+data_fim %&gt;% ggplot() +
+  geom_point(aes(x = `Public expenditure on education (% of GDP)`,
+                 y = `Government expenditure on education (% of government expenditure)`,
+                 color = as.factor(dbscan)),
+             size = 3) +
+  labs(size=30,title=&quot;Expenditure on Education&quot;) +
+  geom_text(size=3,aes(x = `Public expenditure on education (% of GDP)`,
+                       y = `Government expenditure on education (% of government expenditure)`, label = rownames(data_fim), hjust=0, vjust=-1))
+theme_void()
+</code></pre>
+<p><img src="img/Rplot01dbscan.png" alt="Cluster dbscan" />
+<br />
+<br />
+<br /></p>
 <div class="row">
 <div class="col-md-6">
 <p>E é isso pessoal, neste tópico temos 3 métodos diferente de aplicarmos Cluster em uma base de dados utilizando R. Obrigado pela leitura!</p>
