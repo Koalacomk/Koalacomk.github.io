@@ -6,7 +6,18 @@
     <description>Recent content in Blogs on Koalacomk</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 22 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://Koalacomk.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://Koalacomk.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Clustering with R</title>
+      <link>https://Koalacomk.github.io/blog/2021/06/22/2021-06-22-clustering-with-r/</link>
+      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Koalacomk.github.io/blog/2021/06/22/2021-06-22-clustering-with-r/</guid>
+      <description>Clustering with R 
+Cluster é uma técnica estatística não supervisionada de aglomeração ou agrupamento de elementos ou indíviduos dado suas características e semelhanças. Este agrupamento deve-se a distãncia euclidiana entre os indivíduos e pode ser classificada em Hierarquica e não Hierarquica. Neste post vamos demonstrar como utilizar o R para faze-lo, utilizando uma base de dados e 3 técnicas diferentes. Vamos falar da base primeiro.
+ Cluster is an unsupervised statistical technique of grouping of elements or individuals considering their characteristics and similarities.</description>
+    </item>
+    
     <item>
       <title>Pythonista Automation: Smart Switch</title>
       <link>https://Koalacomk.github.io/blog/2021/05/22/2021-05-22-pythonista-automation-switch/</link>
