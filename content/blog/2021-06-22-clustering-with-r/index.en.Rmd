@@ -19,7 +19,7 @@ banner: img/banners/02Cluster.png
 Neste post vamos demonstrar como utilizar o R para faze-lo, utilizando uma base de dados e 3 técnicas diferentes. Vamos falar da base primeiro. 
 </div>
 <div class = "col-md-6">
-**EN: **Cluster is an **unsupervised statistical technique of grouping of elements or individuals considering their characteristics and similarities**. This classification is due to the Euclidean distance between those individuals and can be defined into Hierarchical and non-Hierarchical.
+**EN: **Cluster is an **unsupervised statistical technique for grouping of elements or individuals considering their characteristics and similarities**. This classification is due to the Euclidean distance between those individuals and can be defined into Hierarchical and non-Hierarchical.
 <br />
 In this post we will demonstrate how to use R to do it, using a public dataset and 3 different techniques.Let´s talk about the database first.
 </div>
@@ -56,7 +56,7 @@ data_fim <- filter(data_t,`Public expenditure on education (% of GDP)`>=0 & `Gov
 
 <div class = "row">
 <div class = "col-md-6">
-**PT: **Se plotarmos os dados em um gráfico podemos ver os países bem espalhados pelo mapa. Nosso objetivo com este tópico é classificarlos de acordo com suas características.
+**PT: **Se plotarmos os dados em um gráfico podemos ver os países bem espalhados pelo mapa. Nosso objetivo com este tópico é classificá-los de acordo com suas características.
 </div>
 <div class = "col-md-6">
 **EN: **If we plot the data on a graph we can see the countries spread out across the map. Our goal with this topic is to classify them according to their characteristics.
@@ -122,10 +122,10 @@ data_fim <- cbind(data_fim, table_dist)
 
 <div class = "row">
 <div class = "col-md-6">
-**PT: **No código acima foi utilizado 5 cluster para serem criados. Infelizmente modelos hierarquicos não performam bem quando temos um grande número de indivíduos, como você pode visualizar abaixo:
+**PT: **No código acima podemos observar que 5 clusters foram criados segundo definimos. Infelizmente modelos hierarquicos não performam bem quando temos um grande número de indivíduos, como você pode visualizar abaixo:
 </div>
 <div class = "col-md-6">
-**EN: **In the code above, 5 clusters were used to be created. Unfortunately hierarchical models doesnt have a good performance when we have a large number of individuals, as you can see below:
+**EN: **In the code above 5 clusters were created as defined. Unfortunately hierarchical models don't have a good performance when we have a large number of individuals, as you can see below:
 </div>
 </div>
 
