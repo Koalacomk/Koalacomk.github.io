@@ -216,7 +216,7 @@
 Neste post vamos demonstrar como utilizar o R para faze-lo, utilizando uma base de dados e 3 técnicas diferentes. Vamos falar da base primeiro.</p>
 </div>
 <div class="col-md-6">
-<p><strong>EN: </strong>Cluster is an <strong>unsupervised statistical technique of grouping of elements or individuals considering their characteristics and similarities</strong>. This classification is due to the Euclidean distance between those individuals and can be defined into Hierarchical and non-Hierarchical.
+<p><strong>EN: </strong>Cluster is an <strong>unsupervised statistical technique for grouping of elements or individuals considering their characteristics and similarities</strong>. This classification is due to the Euclidean distance between those individuals and can be defined into Hierarchical and non-Hierarchical.
 <br />
 In this post we will demonstrate how to use R to do it, using a public dataset and 3 different techniques.Let´s talk about the database first.</p>
 </div>
@@ -248,7 +248,7 @@ data_t &lt;- data_t[,-1]
 data_fim &lt;- filter(data_t,`Public expenditure on education (% of GDP)`&gt;=0 &amp; `Government expenditure on education (% of government expenditure)` &gt;=0) </code></pre>
 <div class="row">
 <div class="col-md-6">
-<p><strong>PT: </strong>Se plotarmos os dados em um gráfico podemos ver os países bem espalhados pelo mapa. Nosso objetivo com este tópico é classificarlos de acordo com suas características.</p>
+<p><strong>PT: </strong>Se plotarmos os dados em um gráfico podemos ver os países bem espalhados pelo mapa. Nosso objetivo com este tópico é classificá-los de acordo com suas características.</p>
 </div>
 <div class="col-md-6">
 <p><strong>EN: </strong>If we plot the data on a graph we can see the countries spread out across the map. Our goal with this topic is to classify them according to their characteristics.</p>
@@ -312,10 +312,10 @@ data_fim &lt;- cbind(data_fim, table_dist)
 </code></pre>
 <div class="row">
 <div class="col-md-6">
-<p><strong>PT: </strong>No código acima foi utilizado 5 cluster para serem criados. Infelizmente modelos hierarquicos não performam bem quando temos um grande número de indivíduos, como você pode visualizar abaixo:</p>
+<p><strong>PT: </strong>No código acima podemos observar que 5 clusters foram criados segundo definimos. Infelizmente modelos hierarquicos não performam bem quando temos um grande número de indivíduos, como você pode visualizar abaixo:</p>
 </div>
 <div class="col-md-6">
-<p><strong>EN: </strong>In the code above, 5 clusters were used to be created. Unfortunately hierarchical models doesnt have a good performance when we have a large number of individuals, as you can see below:</p>
+<p><strong>EN: </strong>In the code above 5 clusters were created as defined. Unfortunately hierarchical models don’t have a good performance when we have a large number of individuals, as you can see below:</p>
 </div>
 </div>
 <div class="figure">
