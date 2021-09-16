@@ -11,7 +11,7 @@ title: FAQ
 
 ## 1. Who am i?
 
-Luiz Fernando de Lucena, 33 y/o Brazilian, living on Chile - Viña del Mar.  My nickname is Koala (just in cause you didn't notice) and i am a Geek enthusiast, i use to play A LOT of videogames and other geek stuffs. I like to travel (18 countries visited so far) but since Covid started i mainly ride my bike along the pacific Coast of Valparaiso. 
+Luiz Fernando de Lucena, 34 y/o Brazilian, living on Chile - Viña del Mar.  My nickname is Koala (just in cause you didn't noticed it ) and i am a Geek enthusiast, i use to play A LOT of videogames and others geek stuffs. I like to travel a lot (18 countries visited so far) but since Covid started i mainly ride my bike along the pacific Coast of Valparaiso. 
  
  
 ## 2. What do i do?

@@ -39,7 +39,7 @@ menu:
       url: mailto:koalacomk@gmail.com
       weight: 4
 params:
-  about_us: <p> Just a simple guy sharing some cool ideas, learning and helping others on their path. Also, a Mathematician, Manager, Brazilian and normal guy.</p>
+  about_us: <p> Just a simple guy sharing some ideas, learning and helping others on theirs path. Also, a Mathematician, Manager, Brazilian and a heavy gamer guy. Living in Viña del Mar at the moment.</p>
   address: "<p class=\"text-uppercase\"><strong>koalacomk@gmail.com</strong>\r\n        <br>+56935290197\r\n<br>Vina del Mar\r\n
     \       <br>\r\n        <strong>Chile</strong>\r\n      </p>\r\n      "
   author: DevCows
@@ -50,7 +50,7 @@ params:
     subtitle: ''
     title: Our Clients
   contact_form_ajax: no
-  copyright: Copyright (c) 2015 - 2016, YourCompany; all rights reserved.
+  #copyright: Copyright (c) 2015 - 2016, YourCompany; all rights reserved.
   date_format: January 2, 2006
   default_sharing_image: img/sharing-default.png
   defaultDescription: Site template made by devcows using hugo

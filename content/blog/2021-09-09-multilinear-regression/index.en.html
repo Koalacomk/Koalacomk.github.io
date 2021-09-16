@@ -1,0 +1,123 @@
+---
+title: Multiple Linear Regression
+author: Luiz Lucena
+date: '2021-09-09'
+slug: multilinear-regression
+categories: []
+tags: []
+banner: img/banners/03Regres.png
+---
+
+<script src="{{< blogdown/postref >}}index.en_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="what-it-is-and-how-to-use-linear-regression-on-r" class="section level2">
+<h2>What it is and how to use Linear Regression on R</h2>
+<p><br /></p>
+<div class="row">
+<div class="col-md-6">
+<p><strong>PT</strong>: Se você nunca ouviu falar sobre, <strong>regressão linear é uma análise preditiva supervisionada</strong> usada para entender e explicar a relação entre uma variável dependente com variáveis independentes. Isso significa que é um modelo ou uma fórmula que explica o comportamento de uma variável Y dadas variáveis X que impactam a variável Y.
+<br /><br />Digamos que queremos estudar o consumo de sorvete por dia em uma loja. Podemos usar o número de sorvetes comprados como nosso resultado, a variável dependente Y. Podemos usar o dia da semana, o clima e a temperatura para explicar esse consumo.</p>
+</div>
+<div class="col-md-6">
+<p><strong>EN</strong>: If you never heard about it, a <strong>linear regression is a supervisioned predictive analysis</strong> used to understand and explain the relationship between a dependent variable with independent variables. This means that it is a model or a formula that explain the behaviour of a variable Y given variables X that impacts the variable Y.
+<br />
+<br />
+Lets say that we want to study the consumption of ice cream given a day. We can use the number of ice creams cones bought as our result , the Dependent variable Y. We could use the day of the week, the weather and temperature to explain this consumption.
+<br /></p>
+</div>
+</div>
+<p><br /></p>
+<div class="figure">
+<img src="img/IceCreamReg.png" alt="" />
+<p class="caption">Ice Cream Model</p>
+</div>
+<div class="row">
+<div class="col-md-6">
+<p><strong>PT</strong>: O modelo acima é uma regressão linear para explicar o número de casquinhas de sorvete vendidas Y em um dia, dadas as 3 variáveis independentes X1, X2 e X3 (dia da semana, clima e temperatura). Os A’s são parâmetros (inclinações) que controlam o impacto das Variáveis independentes X e serão encontrados em nosso modelo.
+<br />O clima e o dia da semana não são variáveis numéricas reais, então talvez tenhamos que trabalhar um pouco para transformá-los, falaremos sobre isso mais abaixo neste post.</p>
+</div>
+<div class="col-md-6">
+<p><strong>EN</strong>: The model above is a linear regression to explain the number of Ice Cream Cones sold Y on a given day with 3 independent variables X1, X2 and X3 (Weekday, Weather and Temperature). The A’s are parameters (slopes) that controls the affect of the independent Variables X and they will be found on our model.
+<br />Weather and Weekday are not actual numericals variables so we might have to work a little bit to transform it but we will talk about it later on this post.</p>
+<p><br /></p>
+</div>
+</div>
+<p><br /></p>
+</div>
+<div id="house-price-dataset" class="section level1">
+<h1>House price Dataset</h1>
+<div class="row">
+<div class="col-md-6">
+<p><strong>PT</strong>: Vamos usar outros <strong><a href="http://www.rossmanchance.com/iscam2/data/housing.txt">dados</a></strong> para entrar em mais detalhes. Os dados são de preços de residências de <strong><a href="http://www.rossmanchance.com/iscam2/">Rossmanchance</a></strong> , que contêm área, preço, cidade e números de quartos e banheiros de cada casa.
+<br />Usando a função Summary <strong><em>summary(house)</em></strong> no R, podemos verificar mais informações dos dados:</p>
+</div>
+<div class="col-md-6">
+<p><strong>EN</strong>: Lets use another <strong><a href="http://www.rossmanchance.com/iscam2/data/housing.txt">dataset</a></strong> to enter into details. The data we are going to use is a Housing prices dataset from <strong><a href="http://www.rossmanchance.com/iscam2/">Rossmanchance</a></strong> , that contais values area, price, city and numbers of bedrooms and bathrooms from each house.
+<br />Using a Summary function <strong><em>summary(house)</em></strong>, we can see how the values are distribuited in the dataset:</p>
+<p><br /></p>
+</div>
+</div>
+<pre><code>house = read.table(&quot;http://www.rossmanchance.com/iscam2/data/housing.txt&quot;, header = T, sep = &quot;\t&quot;)
+summary(house)</code></pre>
+<div class="figure">
+<img src="img/Summary_1.png" alt="" />
+<p class="caption">Summary of House pricing dataset</p>
+</div>
+<br />
+<br />
+<div class="row">
+<div class="col-md-6">
+<p><strong>PT</strong>: Você pode ver acima a distribuição das variáveis na base de dados. Note que City é uma variável categórica (classificável e não continua) ao contrário das outras que são do tipo continuas. Por enquanto, vamos apenas utilizar as variaveis contínuas.
+<br /><br /> Criando um gráfico com os dados da base com exceção de Cidade, podemos ver uma tendência de aumento de valores com a variação dos metros quadrados das casas:</p>
+</div>
+<div class="col-md-6">
+<p><strong>EN</strong>: You can see the distribution of variables in the database above. Note that City is a categorical variable (classifiable and non-continuous) unlike the others that are continuous. For now, let’s just use continuous variables.<br />
+<br /> Plotting a chart with the base data except City, we can see a trend when increasing price values with the variation of square meters:</p>
+<p><br /></p>
+</div>
+</div>
+<pre><code>gg3 &lt;- ggplot(house, aes(x=sqft, y=price)) + 
+  geom_point(aes(col=bedrooms, size=baths)) + 
+  geom_smooth(method=&quot;lm&quot;, se=F) + 
+  labs(subtitle=&quot;House prices per Squarefoor area, n of baths and bedrooms&quot;, 
+       y=&quot;Price&quot;, x=&quot;Square Foot&quot;,  title=&quot;Scatterplot&quot;, caption = &quot;Source: house&quot;)
+plot(gg3)</code></pre>
+<div class="figure">
+<img src="img/Rplotscatter1.png" alt="" />
+<p class="caption">House dataset plot</p>
+</div>
+<br />
+<br />
+<div class="row">
+<div class="col-md-6">
+<p><strong>PT</strong>: A linha azul no gráfico acima já é um modelo linear usando Pé quadrado apenas e você pode ver uma correlação entre Pé quadrado e preço da casa. Vamos analisar essas correlações primeiro.
+<br />Construindo um gráfico de <strong><a href="https://www.statisticshowto.com/probability-and-statistics/correlation-coefficient-formula/">Correlação Pearson</a></strong> como o gráfico abaixo, você pode ver as correlações entre as variáveis. Quanto masis largas as linhas que conectam as variáveis, mais forte são suas correlações, o que significa que elas se relacionam entre si. Você pode ver uma forte correlação entre a variável sqft e preço mas não o mesmo comportamento entre preço e quartos / banheiro.</p>
+</div>
+<div class="col-md-6">
+<p><strong>EN</strong>: The blue line on the graph above is already a linear model using Square foot only and you can see a correlation between Square foot and House price. Lets analyze those correlations first.
+<br />Plotting a <strong><a href="https://www.statisticshowto.com/probability-and-statistics/correlation-coefficient-formula/">Pearson correlation</a></strong> graph like the one below, you can see the correlations between variables. As larger the lines connecting variables , stronger their correlation, meaning that they relate to each other. You can see a strong correlation between the variable sqft and price, but not the same behavior between price and bedrooms/bath.</p>
+<p><br /></p>
+</div>
+</div>
+<p><br /></p>
+<pre><code>house %&gt;%
+  correlation(method = &quot;pearson&quot;) %&gt;%
+  plot()</code></pre>
+<p><img src="img/Rplotcorr1.png" alt="House dataset corr" />
+<br />
+# The Model</p>
+<pre><code>model_houses &lt;- lm(formula = price ~ . - City,data = house)</code></pre>
+<div class="row">
+<div class="col-md-6">
+<p><strong>PT</strong>: O código acima é o que necessitamos para criar nosso modelo. Vamos criar um modelo linear, com a variável <strong><em>price </em></strong> como resultado e utilizando todas as variáveis da base com exceção de <strong><em>City</em></strong>, que é categórica.<br /> Podemos utilizar a função <strong><em>summary(model_houses) </em></strong> para entender mais detalhes deste modelo:</p>
+</div>
+<div class="col-md-6">
+<p><strong>EN</strong>: The code above is what we need to create our model. We are creating a linear model, with the variable <strong><em>price </em></strong> as result and using all the variables in the base with except <strong><em>City</em></strong>, which is categorical.<br /> We can use the function <strong><em>summary(model_houses)</em></strong> to understand more details of this model:</p>
+</div>
+</div>
+<div class="figure">
+<img src="img/RModelSummary.png" alt="" />
+<p class="caption">House model summary</p>
+</div>
+</div>
