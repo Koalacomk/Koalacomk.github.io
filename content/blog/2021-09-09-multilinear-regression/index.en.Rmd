@@ -137,4 +137,4 @@ model_houses <- lm(formula = price ~ . - City,data = house)
 
 
 ![House model summary](img/RModelSummary.png)
-
+# To Continue...
