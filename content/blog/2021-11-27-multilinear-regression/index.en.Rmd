@@ -8,13 +8,12 @@ tags: []
 banner: img/banners/03Regres.png
 ---
 
-
 ## What it is and how to use Linear Regression on R
 <br />
 
 <div class = "row">
 <div class = "col-md-6">
-**PT**: Se você nunca ouviu falar sobre, **regressão linear é uma análise preditiva supervisionada**  usada para entender e explicar a relação entre uma variável dependente com variáveis independentes. Isso significa que é um modelo ou uma fórmula que explica o comportamento de uma variável Y dadas variáveis X que impactam a variável Y.
+**PT**: Se você nunca ouviu falar sobre , **regressão linear é uma análise preditiva supervisionada**  usada para entender e explicar a relação entre uma variável dependente com variáveis independentes. Isso significa que é um modelo ou uma fórmula que explica o comportamento de uma variável Y dadas variáveis X que impactam a variável Y.
 <br /><br />Digamos que queremos estudar o consumo de sorvete por dia em uma loja. Podemos usar o número de sorvetes comprados como nosso resultado, a variável dependente Y. Podemos usar o dia da semana, o clima e a temperatura para explicar esse consumo.
 </div>
 <div class = "col-md-6">
