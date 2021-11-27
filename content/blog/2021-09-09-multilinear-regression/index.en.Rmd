@@ -1,7 +1,7 @@
 ---
 title: Multiple Linear Regression
 author: Luiz Lucena
-date: '2021-09-09'
+date: '2021-11-27'
 slug: multilinear-regression
 categories: []
 tags: []
