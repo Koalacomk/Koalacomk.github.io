@@ -5,7 +5,7 @@ theme: hugo-universal-theme
 languageCode: en-us
 defaultContentLanguage: en
 disqusShortname: devcows
-googleAnalytics: ''
+googleAnalytics: 'UA-127993952-4'
 paginate: 10
 menu:
   main:
