@@ -7,6 +7,8 @@ defaultContentLanguage: en
 disqusShortname: devcows
 googleAnalytics: 'UA-127993952-4'
 paginate: 10
+env:
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 menu:
   main:
     - identifier: home
