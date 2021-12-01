@@ -44,4 +44,4 @@ jobs:
           publish_dir: ./public
         env:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          github_path:
+          github_path: ${{ secrets.GITHUB_TOKEN }}
