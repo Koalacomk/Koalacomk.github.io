@@ -6,7 +6,17 @@
     <description>Recent content on Koalacomk</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://Koalacomk.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 27 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://Koalacomk.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Multiple Linear Regression</title>
+      <link>https://Koalacomk.github.io/blog/2021/11/27/2021-11-27-multilinear-regression/</link>
+      <pubDate>Sat, 27 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://Koalacomk.github.io/blog/2021/11/27/2021-11-27-multilinear-regression/</guid>
+      <description>What it is and how to use Linear Regression on R 
+PT: Se você nunca ouviu falar sobre o tema, regressão linear é uma análise preditiva supervisionada usada para entender e explicar a relação entre uma variável dependente com variáveis independentes. Isso significa que é um modelo ou uma fórmula que explica o comportamento de uma variável Y dadas variáveis X que impactam a variável Y. Digamos que queremos estudar o consumo de sorvete por dia em uma loja.</description>
+    </item>
+    
     <item>
       <title>Clustering with R</title>
       <link>https://Koalacomk.github.io/blog/2021/06/22/2021-06-22-clustering-with-r/</link>
@@ -24,7 +34,7 @@ PT: Cluster é uma técnica estatística não supervisionada de aglomeração ou
       
       <guid>https://Koalacomk.github.io/blog/2021/05/22/2021-05-22-pythonista-automation-switch/</guid>
       <description>Pythonista / IOS Automations - Using a Switch 
-One of the values that we as programmers look for is the practicality in our life, whether in our personal or professional life we always look for improvements of our activities. One of the issues sought in the market that impact our personal lives is the Smart house or Home Automation, which consists of automating or monitoring our domestic tasks and environments using internet connectivity and integrated systems.</description>
+We,programmers, always seek for practicality in our life, whether in our personal or professional environment we always look for improvements of our daily activities. One of the main automation in the market that impact our personal lives is the Smart house or Home Automation, which consists of automating or monitoring our domestic tasks and environments using internet connectivity and integrated systems.</description>
     </item>
     
     <item>
@@ -43,7 +53,7 @@ Please feel free to contact us, our customer service center is working for you 2
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://Koalacomk.github.io/faq/</guid>
-      <description>1. Who am i? Luiz Fernando de Lucena, 33 y/o Brazilian, living on Chile - Viña del Mar. My nickname is Koala (just in cause you didn&amp;rsquo;t notice) and i am a Geek enthusiast, i use to play A LOT of videogames and other geek stuffs. I like to travel (18 countries visited so far) but since Covid started i mainly ride my bike along the pacific Coast of Valparaiso.</description>
+      <description>1. Who am i? Luiz Fernando de Lucena, 34 y/o Brazilian, living on Chile - Viña del Mar. My nickname is Koala (just in cause you didn&amp;rsquo;t noticed it ) and i am a Geek enthusiast, i use to play A LOT of videogames and others geek stuffs. I like to travel a lot (18 countries visited so far) but since Covid started i mainly ride my bike along the pacific Coast of Valparaiso.</description>
     </item>
     
   </channel>
