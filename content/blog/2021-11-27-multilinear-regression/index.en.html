@@ -116,6 +116,64 @@ plot(gg3)</code></pre>
 <p><strong>EN</strong>: The code above is what we need to create our model. We are creating a linear model with the variable <strong><em>price </em></strong> as result (Independent variable Y) and using all the variables in the base except <strong><em>City</em></strong>, which is categorical.<br /> We can use the function <strong><em>summary(model_houses)</em></strong> to understand this model:</p>
 </div>
 </div>
-<p><img src="img/RModelSummary.png" alt="House model summary" />
-# To Continue.,..</p>
+<div class="figure">
+<img src="img/RModelSummary.png" alt="" />
+<p class="caption">House model summary</p>
+</div>
+<div class="row">
+<div class="col-md-6">
+<p><strong>PT</strong>: Há muitas informações na imagem acima. Vamos examiná-las:
+<br /><strong><em>Call</em></strong>: são as variáveis em nosso modelo.
+<br /><strong><em>Residuals</em></strong> é a diferença entre os dados observados (os dados que consumimos) e os dados previstos (o resultado do nosso modelo aplicado aos mesmos dados).
+<br /><strong><em>Coefficients</em></strong> nos dizem o quanto as variáveis independentes X explicam o comportamento de nossa variável independente Y - preço.
+<br /><strong><em>Significance code</em></strong> nos informa sobre o valor p e como o modelo explica o comportamento de nossa variável independente Y - price
+<br />Existem algumas outras informações no final que requerem um pouco mais de conhecimento aprofundado, o que deixaremos para outro post.</p>
+</div>
+<div class="col-md-6">
+<p><strong>EN</strong>: There is a bunch of information on the image above. Lets go over them:
+<br /><strong><em>Call:</em></strong> are the variables on our model.
+<br /> <strong><em>Residuals</em></strong> is the difference between the the observed data (the data we used) and the the predicted data (the result of our model applied to the same data).
+<br /><strong><em>Coefficients</em></strong> tell us how much the independent variables X explain the behavior of our independent variable Y - price.
+<br /> <strong><em>Significance code</em></strong> tell us about the p-value and how the model explain the behavior of our independent variable Y - price.
+<br /> There is some other information on the bottom that require a little bit more deep information, we will let that for another post.</p>
+</div>
+</div>
+<br /><br />
+<div class="row">
+<div class="col-md-6">
+<p><strong>PT</strong>: Usando as informações acima, os Coeficientes estimados seriam as variáveis As em nosso modelo, aquelas da primeira imagem em nosso modelo de casquinha de sorvete. Isso significa que nosso modelo é on our model, the ones for the first picture on our ice cream cone model. That means that our model is <strong>Y(price) = 146817.28 + 221.38 * sqft -52862.71 * bedrooms +27600.71 * baths</strong>. Isso significa que cada sqft acrescenta $ 221,38 no preço da variável Y dependente, bem como - $ 52,862 para cada quarto e $ 27,600 para cada banheiro.<br />
+Mas há uma coisa que devemos verificar antes de usar esta fórmula: o valor p (ou Pr) para cada coeficiente. O valor p é o resultado de um teste de hipóteses que nos diz que quanto mais baixo fica, mais forte é a evidência do impacto daquela variável no comportamento de Y. Isso significa que, por mais baixo que seja, melhor para o nosso modelo. Normalmente consideramos 5% (0,05) como um bom seletor de variáveis boas e más. Você pode ver que apenas <strong><em>sqft</em></strong> tem um valor abaixo de 0,05, portanto, devemos usar apenas esta variável para este modelo.</p>
+</div>
+<div class="col-md-6">
+<p><strong>EN</strong>: Using the information above, the <strong><em>Estimated Coefficients</em></strong> would be the As variables on our model, the ones for the first picture on our ice cream cone model. That means that our model is <strong>Y(price) = 146817.28 + 221.38 * sqft -52862.71 * bedrooms +27600.71 * baths</strong>. That means that every <strong><em>sqft</em></strong> adds $221.38 on the depende variable <strong><em>Y price</em></strong> , as well as -$52.862 for every <strong><em>bedroom</em></strong> and $27.600 for each <strong><em>bath</em></strong>.
+<br />But there is one thing we should check before using this formula: the p-value (or Pr) for every coefficient. The p-value is the result of a hypothesizes test that tell us that as lower it gets, stronger is the evidence of the impact of that variable on the Y behavior. That means that as lowest it is, best for our model. We usually consider 5% (0.05) as a good selector of good and bad variables. You can see that only <strong><em>sqft</em></strong> has a value under 0.05, so we should use only this one variable for this model.</p>
+</div>
+</div>
+<p><br />
+# The Model 2</p>
+<div class="row">
+<div class="col-md-6">
+<p><strong>PT</strong>: E finalmente usando apenas <strong><em>sqft</em></strong> em nosso modelo, vamos ter o seguinte resultado:</p>
+</div>
+<div class="col-md-6">
+<p><strong>EN</strong>: And finally, using just <strong><em>sqft</em></strong> as the variable for our model, we will have the result below:</p>
+</div>
+</div>
+<pre><code>model_houses2 &lt;- lm(formula = price ~ sqft,
+                   data = house)
+
+house$price2 &lt;- model_houses2$fitted.values
+
+my_plot &lt;- 
+  ggplot(house, aes(x = sqft, y = price)) +
+  geom_point(aes(x = sqft, y = price) ,color = &quot;red&quot;, size = 3) +
+  geom_smooth(aes(color = &quot;Fitted Values&quot; , x = sqft, y = price2)) +
+  labs(x = &quot;sqft&quot;, y = &quot;price&quot;) +
+  scale_color_manual(&quot;Legenda:&quot;,values = &quot;grey50&quot;) +
+  theme_cowplot()
+my_plot</code></pre>
+<div class="figure">
+<img src="img/Rplot02.png" alt="" />
+<p class="caption">House model 02</p>
+</div>
 </div>

@@ -136,4 +136,66 @@ model_houses <- lm(formula = price ~ . - City,data = house)
 
 
 ![House model summary](img/RModelSummary.png)
-# To Continue.,..
+
+
+<div class = "row">
+<div class = "col-md-6">
+**PT**:   Há muitas informações na imagem acima. Vamos examiná-las:
+<br />***Call***: são as variáveis em nosso modelo.
+<br />***Residuals*** é a diferença entre os dados observados (os dados que consumimos) e os dados previstos (o resultado do nosso modelo aplicado aos mesmos dados).
+<br />***Coefficients*** nos dizem o quanto as variáveis independentes X explicam o comportamento de nossa variável independente Y - preço.
+<br />***Significance code*** nos informa sobre o valor p e como o modelo explica o comportamento de nossa variável independente Y - price
+<br />Existem algumas outras informações no final que requerem um pouco mais de conhecimento aprofundado, o que deixaremos para outro post.
+</div>
+<div class = "col-md-6">
+**EN**:  There is a bunch of information on the image above. Lets go over them:
+<br />***Call:*** are the variables on our model.
+<br /> ***Residuals***  is the difference between the the observed data (the data we used) and the the predicted data (the result of our model applied to the same data).
+<br />***Coefficients*** tell us how much the independent variables X explain the behavior of our independent variable Y - price.
+<br /> ***Significance code*** tell us about the p-value and how the model explain the behavior of our independent variable Y - price.
+<br /> There is some other information on the bottom that require a little bit more deep information, we will let that for another post.
+</div>
+</div>
+<br /><br />
+<div class = "row">
+<div class = "col-md-6">
+**PT**:  Usando as informações acima, os Coeficientes estimados seriam as variáveis As em nosso modelo, aquelas da primeira imagem em nosso modelo de casquinha de sorvete. Isso significa que nosso modelo é on our model, the ones for the first picture on our ice cream cone model. That means that our model is **Y(price) = 146817.28 + 221.38 * sqft -52862.71 * bedrooms +27600.71 * baths**. Isso significa que cada sqft acrescenta $ 221,38 no preço da variável Y dependente, bem como - $ 52,862 para cada quarto e $ 27,600 para cada banheiro.<br />
+Mas há uma coisa que devemos verificar antes de usar esta fórmula: o valor p (ou Pr) para cada coeficiente. O valor p é o resultado de um teste de hipóteses que nos diz que quanto mais baixo fica, mais forte é a evidência do impacto daquela variável no comportamento de Y. Isso significa que, por mais baixo que seja, melhor para o nosso modelo. Normalmente consideramos 5% (0,05) como um bom seletor de variáveis boas e más. Você pode ver que apenas ***sqft*** tem um valor abaixo de 0,05, portanto, devemos usar apenas esta variável para este modelo. 
+</div>
+<div class = "col-md-6">
+**EN**: Using the information above, the ***Estimated Coefficients*** would be the As variables on our model, the ones for the first picture on our ice cream cone model. That means that our model is **Y(price) = 146817.28 + 221.38 * sqft -52862.71 * bedrooms +27600.71 * baths**.  That means that every ***sqft*** adds $221.38 on the depende variable ***Y price*** , as well as -$52.862 for every ***bedroom*** and $27.600 for each ***bath***. 
+<br />But there is one thing we should check before using this formula: the p-value (or Pr) for every coefficient. The p-value is the result of a hypothesizes test that tell us that as lower it gets, stronger is the evidence of the impact of that variable on the Y behavior. That means that as lowest it is, best for our model. We usually consider 5% (0.05) as a good selector of good and bad variables. You can see that only ***sqft*** has a value under 0.05, so we should use only this one variable for this model.
+</div>
+</div>
+
+<br />
+# The Model 2
+
+
+<div class = "row">
+<div class = "col-md-6">
+**PT**: E finalmente usando apenas ***sqft*** em nosso modelo, vamos ter o seguinte resultado:
+</div>
+<div class = "col-md-6">
+**EN**: And finally, using just ***sqft*** as the variable for our model, we will have the result below: 
+</div>
+</div>
+
+```
+model_houses2 <- lm(formula = price ~ sqft,
+                   data = house)
+
+house$price2 <- model_houses2$fitted.values
+
+my_plot <- 
+  ggplot(house, aes(x = sqft, y = price)) +
+  geom_point(aes(x = sqft, y = price) ,color = "red", size = 3) +
+  geom_smooth(aes(color = "Fitted Values" , x = sqft, y = price2)) +
+  labs(x = "sqft", y = "price") +
+  scale_color_manual("Legenda:",values = "grey50") +
+  theme_cowplot()
+my_plot
+```
+
+
+![House model 02](img/Rplot02.png)
